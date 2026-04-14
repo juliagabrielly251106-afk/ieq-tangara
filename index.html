@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Igreja do Evangelho Quadrangular — Tangará, São Carlos SP</title>
+<meta name="description" content="Igreja do Evangelho Quadrangular Tangará — São Carlos SP. Cultos, ministérios, jovens e muito mais.">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d0d0d;color:#fff;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ═══════════════════════════════════════════
+   UTILITÁRIOS
+═══════════════════════════════════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.section{padding:5rem 0;}
+.sec-tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e63c14;font-weight:600;margin-bottom:.75rem;display:block;}
+.sec-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem;}
+.sec-sub{color:rgba(255,255,255,.45);font-size:15px;margin-bottom:3rem;}
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);}
+
+/* BOTÕES */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#e63c14;color:#fff;border:none;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:#c43010;transform:translateY(-2px);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;transition:border-color .2s,transform .15s;}
+.btn-outline:hover{border-color:#fff;transform:translateY(-2px);}
+
+/* ANIMAÇÃO SCROLL */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;transition:background .4s,backdrop-filter .4s;}
+nav.scrolled{background:rgba(10,10,10,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);}
+.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;}
+.logo-grid{display:grid;grid-template-columns:repeat(2,1fr);width:44px;height:44px;border-radius:8px;overflow:hidden;}
+.lc{display:flex;align-items:center;justify-content:center;font-size:13px;}
+.lc1{background:#e63c14;}.lc2{background:#FFCC00;}.lc3{background:#9B59B6;}.lc4{background:#2980B9;}
+.nav-logo-text{font-size:14px;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.nav-logo-text span{display:block;font-size:11px;font-weight:400;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.7);font-size:14px;letter-spacing:.02em;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.8);transition:color .2s;}
+.mobile-menu a:hover{color:#e63c14;}
+.mobile-close{position:absolute;top:2rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;}
+@media(max-width:768px){nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* ═══════════════════════════════════════════
+   HOME HERO
+═══════════════════════════════════════════ */
+#home{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('imagens/culto-hero.jpg') center/cover no-repeat;transform:scale(1.05);transition:transform .1s linear;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.3) 100%);}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:0 1.5rem;animation:fadeUp 1s ease both;}
+.hero-tag{display:inline-block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;animation:fadeUp 1s .1s ease both;}
+.hero-title{font-size:clamp(2rem,6vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem;animation:fadeUp 1s .2s ease both;}
+.hero-title .highlight{color:#FFD700;}
+.hero-subtitle{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:2.5rem;font-style:italic;animation:fadeUp 1s .35s ease both;}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .5s ease both;}
+.scroll-indicator{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.35);font-size:11px;letter-spacing:.12em;text-transform:uppercase;animation:fadeUp 1s .7s ease both;}
+.scroll-arrow{width:18px;height:18px;border-right:2px solid rgba(255,255,255,.3);border-bottom:2px solid rgba(255,255,255,.3);transform:rotate(45deg);animation:bounce 1.6s infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
+
+.info-strip{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;}
+.info-item{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.55);}
+.info-dot{width:6px;height:6px;border-radius:50%;background:#e63c14;flex-shrink:0;}
+
+/* ═══════════════════════════════════════════
+   SOBRE
+═══════════════════════════════════════════ */
+.historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.historia-text p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:1rem;}
+.historia-text p strong{color:rgba(255,255,255,.9);}
+.historia-img{position:relative;}
+.historia-img img{width:100%;border-radius:20px;object-fit:cover;height:460px;}
+.img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 16px;font-size:13px;}
+.img-badge strong{display:block;color:#fff;font-weight:600;}
+.img-badge span{color:rgba(255,255,255,.5);font-size:12px;}
+
+.pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:4rem;}
+.pilar-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:2rem 1.25rem;text-align:center;background:rgba(255,255,255,.03);transition:border-color .25s,transform .25s;}
+.pilar-card:hover{border-color:rgba(230,60,20,.4);transform:translateY(-4px);}
+.pilar-icon{width:56px;height:56px;border-radius:14px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.p1{background:rgba(230,60,20,.15);}.p2{background:rgba(255,204,0,.12);}.p3{background:rgba(155,89,182,.15);}.p4{background:rgba(41,128,185,.15);}
+.pilar-card h3{font-size:15px;font-weight:600;margin-bottom:.5rem;}
+.pilar-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;}
+
+.pastores-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:700px;margin:3rem auto 0;}
+.pastor-card{border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.03);transition:transform .25s,border-color .25s;}
+.pastor-card:hover{transform:translateY(-5px);border-color:rgba(230,60,20,.35);}
+.pastor-card img{width:100%;height:280px;object-fit:cover;object-position:top;}
+.pastor-info{padding:1.25rem;}
+.pastor-info strong{font-size:16px;font-weight:600;display:block;margin-bottom:2px;}
+.pastor-info span{font-size:13px;color:rgba(255,255,255,.45);}
+.pastor-badge{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(230,60,20,.15);color:#e63c14;border:1px solid rgba(230,60,20,.25);border-radius:6px;padding:3px 10px;}
+
+/* ═══════════════════════════════════════════
+   CULTOS
+═══════════════════════════════════════════ */
+#cultos{background:#080808;}
+.cultos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.culto-card{border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem 1.5rem;background:rgba(255,255,255,.03);transition:border-color .25s,transform .25s;}
+.culto-card:hover{border-color:rgba(230,60,20,.4);transform:translateY(-4px);}
+.culto-dia{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;}
+.culto-nome{font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;}
+.horario-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:.85rem;}
+.horario-dot{width:8px;height:8px;border-radius:50%;background:#e63c14;flex-shrink:0;margin-top:5px;}
+.horario-info strong{display:block;font-size:15px;font-weight:600;}
+.horario-info span{font-size:12px;color:rgba(255,255,255,.45);}
+.culto-badge{display:inline-block;margin-top:.75rem;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:rgba(230,60,20,.12);color:#e63c14;border:1px solid rgba(230,60,20,.25);border-radius:6px;padding:4px 12px;}
+.culto-badge.gold{background:rgba(255,204,0,.1);color:#FFCC00;border-color:rgba(255,204,0,.25);}
+.culto-badge.purple{background:rgba(155,89,182,.15);color:#c39bd3;border-color:rgba(155,89,182,.3);}
+.jovens-strip{margin-top:2rem;background:linear-gradient(135deg,#1a0a00,#3d1000);border:1px solid rgba(230,60,20,.3);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.jovens-strip-text strong{display:block;font-size:1rem;font-weight:700;margin-bottom:4px;}
+.jovens-strip-text span{font-size:13px;color:rgba(255,255,255,.5);}
+
+/* NOVO TEMPLO BANNER */
+.templo-banner{margin-top:2rem;border-radius:20px;overflow:hidden;position:relative;height:220px;}
+.templo-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(.7);}
+.templo-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;background:linear-gradient(to right,rgba(0,0,0,.7),rgba(0,0,0,.3));}
+.templo-banner-overlay h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem;}
+.templo-banner-overlay p{font-size:14px;color:rgba(255,255,255,.65);}
+
+/* ═══════════════════════════════════════════
+   MINISTÉRIOS
+═══════════════════════════════════════════ */
+.min-destaque{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.min-card{border-radius:20px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.08);transition:transform .3s,border-color .3s;cursor:default;}
+.min-card:hover{transform:translateY(-5px);border-color:rgba(230,60,20,.4);}
+.min-card img{width:100%;object-fit:cover;display:block;transition:transform .4s;}
+.min-card:hover img{transform:scale(1.04);}
+.min-card.tall img{height:360px;}
+.min-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%);padding:1.5rem 1.25rem 1.25rem;}
+.min-overlay .badge{font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(230,60,20,.8);color:#fff;border-radius:4px;padding:2px 8px;display:inline-block;margin-bottom:.5rem;}
+.min-overlay h3{font-size:1.1rem;font-weight:700;margin-bottom:3px;}
+.min-overlay p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5;}
+.min-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.min-small{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:transform .25s,border-color .25s;}
+.min-small:hover{transform:translateY(-4px);border-color:rgba(230,60,20,.35);}
+.min-placeholder{height:130px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.min-small-info{padding:1rem;}
+.min-small-info strong{display:block;font-size:14px;font-weight:600;margin-bottom:3px;}
+.min-small-info span{font-size:12px;color:rgba(255,255,255,.4);}
+
+/* ═══════════════════════════════════════════
+   JOVENS INFLUENTES
+═══════════════════════════════════════════ */
+#jovens{background:#080808;}
+.jovens-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.jovens-bg{position:absolute;inset:0;background:url('imagens/jovens-culto.jpg') center/cover no-repeat;}
+.jovens-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.92) 0%,rgba(20,0,40,.75) 50%,rgba(0,0,0,.5) 100%);}
+.jovens-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:6rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.jovens-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a855f7;font-weight:600;margin-bottom:1.25rem;border:1px solid rgba(168,85,247,.3);border-radius:50px;padding:4px 14px;}
+.jovens-title{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.25rem;}
+.jovens-title .grad{background:linear-gradient(135deg,#a855f7,#ec4899,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.jovens-frase{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.7;font-style:italic;margin-bottom:2rem;border-left:3px solid #a855f7;padding-left:1rem;}
+.jovens-frase strong{color:rgba(255,255,255,.9);font-style:normal;}
+.stats-row{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;}
+.stat strong{display:block;font-size:2rem;font-weight:800;color:#a855f7;}
+.stat span{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.05em;text-transform:uppercase;}
+.btn-purple{padding:13px 28px;background:#a855f7;color:#fff;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-purple:hover{background:#9333ea;transform:translateY(-2px);}
+.btn-outline-purple{padding:13px 28px;background:transparent;color:#fff;border:2px solid rgba(168,85,247,.5);border-radius:50px;font-size:14px;font-weight:600;transition:border-color .2s,transform .15s;}
+.btn-outline-purple:hover{border-color:#a855f7;transform:translateY(-2px);}
+
+.lideres-card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(168,85,247,.2);border-radius:24px;overflow:hidden;}
+.lideres-card img{width:100%;height:320px;object-fit:cover;object-position:top;}
+.lideres-info{padding:1.5rem;}
+.lideres-names{font-size:1.2rem;font-weight:700;margin-bottom:4px;}
+.lideres-role{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a855f7;font-weight:600;}
+.lideres-desc{font-size:13px;color:rgba(255,255,255,.5);margin-top:.75rem;line-height:1.6;}
+
+.equipe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:2rem;}
+.membro-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.03);transition:transform .25s,border-color .25s;}
+.membro-card:hover{transform:translateY(-5px);border-color:rgba(168,85,247,.4);}
+.membro-card img{width:100%;height:180px;object-fit:cover;object-position:top;}
+.membro-info{padding:1rem;}
+.membro-info strong{display:block;font-size:15px;font-weight:600;margin-bottom:3px;}
+.membro-cargo{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a855f7;font-weight:600;}
+
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.prog-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.75rem 1.5rem;background:rgba(255,255,255,.03);transition:border-color .25s,transform .25s;}
+.prog-card:hover{border-color:rgba(168,85,247,.4);transform:translateY(-3px);}
+.prog-dia{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#a855f7;margin-bottom:.75rem;font-weight:600;}
+.prog-nome{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.prog-hora{font-size:2.5rem;font-weight:800;color:rgba(168,85,247,.2);margin-bottom:.75rem;line-height:1;}
+.prog-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;}
+
+.fotos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.foto-item{border-radius:16px;overflow:hidden;}
+.foto-item img{width:100%;height:220px;object-fit:cover;transition:transform .4s;}
+.foto-item:hover img{transform:scale(1.05);}
+
+.insta-inner{background:linear-gradient(135deg,#1a0030,#2d0050);border:1px solid rgba(168,85,247,.25);border-radius:20px;padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
+.insta-text strong{display:block;font-size:1rem;font-weight:700;margin-bottom:4px;}
+.insta-text span{font-size:13px;color:rgba(255,255,255,.5);}
+.btn-ig{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;border-radius:50px;padding:11px 22px;font-size:13px;font-weight:600;transition:opacity .2s,transform .15s;}
+.btn-ig:hover{opacity:.85;transform:translateY(-2px);}
+
+/* ═══════════════════════════════════════════
+   EVENTOS
+═══════════════════════════════════════════ */
+.tema-banner{border-radius:24px;overflow:hidden;position:relative;min-height:260px;display:flex;align-items:center;margin-bottom:3rem;background:linear-gradient(135deg,#0d0030,#1a0050);border:1px solid rgba(100,60,200,.3);}
+.tema-content{position:relative;z-index:2;padding:3rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap;}
+.tema-arte img{width:150px;border-radius:12px;}
+.tema-text .badge{display:inline-block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:rgba(100,60,200,.3);color:#a78bfa;border:1px solid rgba(100,60,200,.4);border-radius:50px;padding:3px 12px;margin-bottom:1rem;}
+.tema-text h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:.75rem;}
+.tema-text p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;font-style:italic;max-width:480px;}
+.tema-text p strong{color:rgba(255,255,255,.85);font-style:normal;}
+
+.destaques-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem;}
+.evento-card{border-radius:20px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.08);transition:transform .3s,border-color .3s;}
+.evento-card:hover{transform:translateY(-5px);border-color:rgba(230,60,20,.4);}
+.evento-card img{width:100%;height:220px;object-fit:cover;transition:transform .4s;}
+.evento-card:hover img{transform:scale(1.05);}
+.evento-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,transparent 100%);padding:1.5rem 1.25rem 1.25rem;}
+.evento-data{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#e63c14;font-weight:600;margin-bottom:4px;}
+.evento-nome{font-size:1rem;font-weight:700;margin-bottom:3px;}
+.evento-tipo{font-size:12px;color:rgba(255,255,255,.5);}
+.evento-badge{position:absolute;top:1rem;right:1rem;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:rgba(230,60,20,.85);color:#fff;border-radius:50px;padding:3px 10px;font-weight:600;}
+.evento-badge.purple{background:rgba(168,85,247,.85);}
+.evento-badge.gold{background:rgba(180,130,0,.85);}
+
+.cal-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.cal-item{display:flex;align-items:center;gap:1rem;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.9rem 1.1rem;background:rgba(255,255,255,.02);transition:border-color .2s,background .2s;}
+.cal-item:hover{border-color:rgba(230,60,20,.3);background:rgba(230,60,20,.04);}
+.cal-data{min-width:52px;text-align:center;background:rgba(230,60,20,.12);border-radius:8px;padding:6px 4px;}
+.cal-data .dia{font-size:1.1rem;font-weight:800;color:#e63c14;line-height:1;}
+.cal-data .mes{font-size:10px;text-transform:uppercase;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+.cal-info strong{display:block;font-size:14px;font-weight:600;}
+.cal-info span{font-size:12px;color:rgba(255,255,255,.4);}
+.cal-item.destaque{border-color:rgba(230,60,20,.3);background:rgba(230,60,20,.05);}
+.cal-item.destaque .cal-data{background:rgba(230,60,20,.25);}
+.aviso{margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,204,0,.06);border:1px solid rgba(255,204,0,.2);border-radius:12px;font-size:13px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:10px;}
+
+/* ═══════════════════════════════════════════
+   LOCALIZAÇÃO & CONTATO
+═══════════════════════════════════════════ */
+#localizacao{background:#080808;}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+.mapa-container{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);}
+.mapa-container iframe{width:100%;height:340px;display:block;border:none;}
+.loc-info{display:flex;flex-direction:column;gap:1.25rem;}
+.loc-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.5rem;background:rgba(255,255,255,.03);}
+.loc-card-title{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e63c14;font-weight:600;margin-bottom:.75rem;}
+.loc-endereco{font-size:15px;line-height:1.8;color:rgba(255,255,255,.8);}
+.loc-endereco strong{color:#fff;display:block;font-size:1rem;margin-bottom:.25rem;}
+.novo-templo-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,204,0,.2);position:relative;}
+.novo-templo-card img{width:100%;height:200px;object-fit:cover;display:block;}
+.novo-templo-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,transparent 100%);padding:1.25rem;}
+.novo-templo-overlay strong{display:block;font-size:15px;font-weight:700;color:#FFCC00;margin-bottom:3px;}
+.novo-templo-overlay span{font-size:12px;color:rgba(255,255,255,.55);}
+.templo-badge{position:absolute;top:1rem;left:1rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,204,0,.85);color:#000;font-weight:700;border-radius:50px;padding:3px 12px;}
+.btn-maps{display:inline-flex;align-items:center;gap:8px;background:#e63c14;color:#fff;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:600;transition:background .2s,transform .15s;}
+.btn-maps:hover{background:#c43010;transform:translateY(-2px);}
+
+.contato-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:4rem;}
+.contato-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.5rem;background:rgba(255,255,255,.03);display:flex;align-items:center;gap:1.25rem;transition:border-color .25s,transform .25s,background .25s;}
+.contato-card:hover{transform:translateY(-4px);border-color:rgba(230,60,20,.4);background:rgba(230,60,20,.05);}
+.contato-icon{width:52px;height:52px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.ic-red{background:rgba(230,60,20,.15);}.ic-purple{background:rgba(168,85,247,.15);}.ic-green{background:rgba(37,211,102,.12);}.ic-pink{background:rgba(225,48,108,.12);}
+.contato-info strong{display:block;font-size:15px;font-weight:600;margin-bottom:3px;}
+.contato-info span{font-size:13px;color:rgba(255,255,255,.45);}
+.oracao-card{grid-column:1/-1;border:1px solid rgba(37,211,102,.25);border-radius:18px;padding:2rem;background:rgba(37,211,102,.04);display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .25s,transform .25s;}
+.oracao-card:hover{border-color:rgba(37,211,102,.5);transform:translateY(-3px);}
+.oracao-left{display:flex;align-items:center;gap:1.25rem;}
+.oracao-icon{width:60px;height:60px;border-radius:16px;flex-shrink:0;background:rgba(37,211,102,.15);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.oracao-text strong{display:block;font-size:1.1rem;font-weight:700;margin-bottom:4px;}
+.oracao-text span{font-size:13px;color:rgba(255,255,255,.5);}
+.btn-oracao{background:#25d366;color:#000;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+
+/* ═══════════════════════════════════════════
+   NOVO AQUI
+═══════════════════════════════════════════ */
+.acolhimento-hero{position:relative;border-radius:24px;overflow:hidden;min-height:300px;display:flex;align-items:center;margin-bottom:3rem;}
+.acolhimento-bg{position:absolute;inset:0;background:url('imagens/culto-hero.jpg') center/cover no-repeat;}
+.acolhimento-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.92) 50%,rgba(0,0,0,.3) 100%);}
+.acolhimento-content{position:relative;z-index:2;padding:3rem;max-width:560px;}
+.acolhimento-content h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.acolhimento-content h2 span{color:#e63c14;}
+.acolhimento-content p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:1.5rem;}
+
+.passos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:3rem;}
+.passo-card{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.5rem 1.25rem;background:rgba(255,255,255,.03);position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
+.passo-card:hover{border-color:rgba(230,60,20,.35);transform:translateY(-4px);}
+.passo-num{font-size:3.5rem;font-weight:900;color:rgba(230,60,20,.1);position:absolute;top:.5rem;right:1rem;line-height:1;}
+.passo-icon{font-size:1.8rem;margin-bottom:1rem;}
+.passo-card h3{font-size:15px;font-weight:700;margin-bottom:.5rem;}
+.passo-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;}
+
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:3rem;}
+.faq-item{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.25rem;background:rgba(255,255,255,.03);transition:border-color .2s;}
+.faq-item:hover{border-color:rgba(230,60,20,.3);}
+.faq-item strong{display:block;font-size:14px;font-weight:600;margin-bottom:.5rem;}
+.faq-item p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;}
+
+.cta-final{border-radius:20px;background:linear-gradient(135deg,#1a0000,#3d0800);border:1px solid rgba(230,60,20,.25);padding:3rem;text-align:center;}
+.cta-final h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:1rem;}
+.cta-final p{font-size:15px;color:rgba(255,255,255,.6);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{background:#080808;border-top:1px solid rgba(255,255,255,.06);padding:3rem 2rem;text-align:center;}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:1.5rem;}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+.footer-links a{font-size:14px;color:rgba(255,255,255,.45);transition:color .2s;}
+.footer-links a:hover{color:#e63c14;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVO
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  .historia-grid,.pilares-grid,.cultos-grid,.min-destaque,.jovens-content,.loc-grid{grid-template-columns:1fr;}
+  .equipe-grid,.destaques-grid{grid-template-columns:repeat(2,1fr);}
+  .passos-grid{grid-template-columns:repeat(2,1fr);}
+  .pastores-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .min-grid,.prog-grid,.cal-grid,.faq-grid,.fotos-grid,.contato-grid{grid-template-columns:1fr;}
+  .equipe-grid{grid-template-columns:1fr 1fr;}
+  .pastores-grid{grid-template-columns:1fr;}
+  .oracao-card{flex-direction:column;align-items:flex-start;}
+  .jovens-content{padding:4rem 1.5rem;}
+  .wrap{padding:0 1.25rem;}
+}
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</head>
+<body>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#home" onclick="closeMobile()">Início</a>
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#cultos" onclick="closeMobile()">Cultos</a>
+  <a href="#ministerios" onclick="closeMobile()">Ministérios</a>
+  <a href="#jovens" onclick="closeMobile()">Jovens</a>
+  <a href="#eventos" onclick="closeMobile()">Eventos</a>
+  <a href="#localizacao" onclick="closeMobile()">Localização</a>
+  <a href="#novo-aqui" onclick="closeMobile()">Novo Aqui</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo" id="logo">
+    <div class="logo-grid">
+      <div class="lc lc1">✝</div>
+      <div class="lc lc2">🕊</div>
+      <div class="lc lc3">🏆</div>
+      <div class="lc lc4">♛</div>
+    </div>
+    <div class="nav-logo-text">IEQ Tangará<span>São Carlos · SP</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#cultos">Cultos</a></li>
+    <li><a href="#ministerios">Ministérios</a></li>
+    <li><a href="#jovens">Jovens</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+    <li><a href="#novo-aqui">Novo Aqui</a></li>
+  </ul>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ═══ HOME ═══ -->
+<section id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Bem-vindo à</p>
+    <h1 class="hero-title">Igreja do Evangelho<br><span class="highlight">Quadrangular</span> Tangará</h1>
+    <p class="hero-subtitle"><strong>"Jesus Cristo é o mesmo, ontem, hoje e eternamente."</strong><br><small>Hebreus 13:8</small></p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#cultos">Quero Visitar</a>
+      <a class="btn-outline" href="https://wa.me/5519992417277?text=Olá,%20gostaria%20de%20fazer%20um%20pedido%20de%20oração." target="_blank">Pedir Oração</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-arrow"></div></div>
+</section>
+
+<div class="info-strip">
+  <div class="info-item"><div class="info-dot"></div>Rua Ilton Resitano, 164 · Jardim Tangará, São Carlos – SP</div>
+  <div class="info-item"><div class="info-dot"></div>Dom 9h e 19h · Ter 20h e 21h · Qui 20h</div>
+  <div class="info-item"><div class="info-dot"></div>Novo templo em breve 🙌</div>
+</div>
+
+<!-- ═══ SOBRE ═══ -->
+<section id="sobre" class="section">
+  <div class="wrap">
+    <div class="historia-grid fade-up">
+      <div class="historia-text">
+        <span class="sec-tag">Nossa História</span>
+        <h2 class="sec-title">Uma história de fé que atravessa gerações</h2>
+        <p>A <strong>Igreja do Evangelho Quadrangular</strong> foi fundada em <strong>1923</strong> por <strong>Aimee Semple McPherson</strong> em Los Angeles, EUA, como um movimento pentecostal com foco em cura divina e evangelismo ao redor do mundo.</p>
+        <p>No Brasil, a chama chegou em <strong>15 de novembro de 1951</strong>, em São João da Boa Vista (SP), pelo missionário <strong>Harold Williams</strong>, que usou tendas de lona para levar o Evangelho por todo o país.</p>
+        <p>Aqui em <strong>Tangará, São Carlos – SP</strong>, essa história continua sendo escrita a cada culto, cada oração, cada vida transformada.</p>
+      </div>
+      <div class="historia-img">
+        <img src="imagens/pastor-marcelo.jpg" alt="Pastor Marcelo Garcia" />
+        <div class="img-badge"><strong>Pastor Marcelo Garcia</strong><span>Ministrando a Palavra</span></div>
+      </div>
+    </div>
+
+    <div class="pilares-grid fade-up">
+      <div class="pilar-card"><div class="pilar-icon p1">✝</div><h3>Jesus Salva</h3><p>A salvação plena por meio da fé em Jesus Cristo, nosso Senhor.</p></div>
+      <div class="pilar-card"><div class="pilar-icon p2">🕊</div><h3>Jesus Batiza</h3><p>O batismo com o Espírito Santo e o poder para servir.</p></div>
+      <div class="pilar-card"><div class="pilar-icon p3">🙌</div><h3>Jesus Cura</h3><p>A cura divina disponível para todos que creem no seu poder.</p></div>
+      <div class="pilar-card"><div class="pilar-icon p4">♛</div><h3>Jesus Volta</h3><p>A esperança na segunda vinda de Cristo como Rei dos reis.</p></div>
+    </div>
+
+    <div class="pastores-grid fade-up">
+      <div class="pastor-card"><img src="imagens/pastor-marcelo.jpg" alt="Pastor Marcelo Garcia" /><div class="pastor-info"><strong>Marcelo Garcia</strong><span>Pastor Titular — IEQ Tangará</span><div class="pastor-badge">Pastor Titular</div></div></div>
+      <div class="pastor-card"><img src="imagens/pastora-andreia.jpg" alt="Pastora Andréia Garcia" /><div class="pastor-info"><strong>Andréia Garcia</strong><span>Pastora — IEQ Tangará</span><div class="pastor-badge">Pastora</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ CULTOS ═══ -->
+<section id="cultos" class="section">
+  <div class="wrap">
+    <span class="sec-tag">Programação</span>
+    <h2 class="sec-title">Nossos Cultos</h2>
+    <p class="sec-sub">Venha encontrar Deus conosco — todos são bem-vindos</p>
+    <div class="cultos-grid fade-up">
+      <div class="culto-card">
+        <p class="culto-dia">☀ Domingo</p>
+        <h3 class="culto-nome">Culto de Adoração</h3>
+        <div class="horario-row"><div class="horario-dot"></div><div class="horario-info"><strong>9h00</strong><span>Culto da Manhã</span></div></div>
+        <div class="horario-row"><div class="horario-dot"></div><div class="horario-info"><strong>19h00</strong><span>Culto da Noite</span></div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem;">
+          <span class="culto-badge gold">1º Dom — Primícias</span>
+          <span class="culto-badge purple">2º Dom — Santa Ceia</span>
+        </div>
+      </div>
+      <div class="culto-card">
+        <p class="culto-dia">📖 Terça-feira</p>
+        <h3 class="culto-nome">Ensino & Oração</h3>
+        <div class="horario-row"><div class="horario-dot"></div><div class="horario-info"><strong>20h00</strong><span>Escola do Crescimento</span></div></div>
+        <div class="horario-row"><div class="horario-dot"></div><div class="horario-info"><strong>21h00</strong><span>Uniora — Reunião de Oração</span></div></div>
+      </div>
+      <div class="culto-card">
+        <p class="culto-dia">🔥 Quinta-feira</p>
+        <h3 class="culto-nome">Campanha</h3>
+        <div class="horario-row"><div class="horario-dot"></div><div class="horario-info"><strong>20h00</strong><span>Culto de Campanha</span></div></div>
+        <span class="culto-badge">Culto Especial</span>
+      </div>
+    </div>
+    <div class="jovens-strip fade-up">
+      <div class="jovens-strip-text"><strong>Sexta & Sábado — Jovens Influentes</strong><span>Programação especial — confira no Instagram</span></div>
+      <a class="btn-primary" href="https://instagram.com/influentes_ieqtangara" target="_blank">📱 @influentes_ieqtangara</a>
+    </div>
+    <div class="templo-banner fade-up">
+      <img src="imagens/novo-templo2.png" alt="Novo Templo IEQ Tangará" />
+      <div class="templo-banner-overlay"><h3>🏗 Novo Templo em Construção</h3><p>Em breve um novo espaço para servir e adorar a Deus em Tangará</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ MINISTÉRIOS ═══ -->
+<section id="ministerios" class="section">
+  <div class="wrap">
+    <span class="sec-tag">Ministérios</span>
+    <h2 class="sec-title">Nossas Frentes de Serviço</h2>
+    <p class="sec-sub">Cada ministério com um propósito, todos unidos em Cristo</p>
+    <div class="min-destaque fade-up">
+      <div class="min-card tall"><img src="imagens/jovens-culto.jpg" alt="Jovens Influentes" style="height:360px;" /><div class="min-overlay"><span class="badge">Destaque</span><h3>Jovens Influentes</h3><p>Uma geração levantada para impactar Tangará e além.</p></div></div>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div class="min-card"><img src="imagens/ministerio-mulheres.jpg" alt="Mulheres" style="height:170px;" /><div class="min-overlay"><h3>Mulheres</h3><p>Força, fé e comunidade feminina.</p></div></div>
+        <div class="min-card"><img src="imagens/ministerio-louvor.jpg" alt="Louvor" style="height:170px;" /><div class="min-overlay"><h3>Louvor</h3><p>Adoração que transforma e liberta.</p></div></div>
+      </div>
+    </div>
+    <div class="min-grid fade-up">
+      <div class="min-small"><img src="imagens/ministerio-criancas.jpg" alt="Crianças" style="width:100%;height:130px;object-fit:cover;" /><div class="min-small-info"><strong>Crianças</strong><span>Sementes do Reino</span></div></div>
+      <div class="min-small"><div class="min-placeholder">💃</div><div class="min-small-info"><strong>Dança — Vyrtud</strong><span>@vyrtud_tangara</span></div></div>
+      <div class="min-small"><div class="min-placeholder">💪</div><div class="min-small-info"><strong>Homens Corajosos</strong><span>Adicionar foto pelo admin</span></div></div>
+      <div class="min-small"><div class="min-placeholder">📸</div><div class="min-small-info"><strong>Mídia</strong><span>Adicionar foto pelo admin</span></div></div>
+      <div class="min-small"><div class="min-placeholder">🤝</div><div class="min-small-info"><strong>Diaconato</strong><span>Adicionar foto pelo admin</span></div></div>
+      <div class="min-small"><div class="min-placeholder">💃</div><div class="min-small-info"><strong>Dança — Ágape / Yeshua</strong><span>Adicionar foto pelo admin</span></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ JOVENS ═══ -->
+<section id="jovens">
+  <div class="jovens-hero">
+    <div class="jovens-bg"></div>
+    <div class="jovens-overlay"></div>
+    <div class="jovens-content">
+      <div>
+        <div class="jovens-tag">⚡ Ministério Jovens</div>
+        <h1 class="jovens-title"><span class="grad">Influentes</span><br>IEQ Tangará</h1>
+        <p class="jovens-frase"><strong>"Jovens que influenciam,<br>não são influenciados"</strong></p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-purple" href="https://instagram.com/influentes_ieqtangara" target="_blank">📱 Ver Instagram</a>
+          <a class="btn-outline-purple" href="#contato">Fazer parte</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>Sex & Sáb</strong><span>Programação</span></div>
+          <div class="stat"><strong>20h</strong><span>Horário geral</span></div>
+          <div class="stat"><strong>100%</strong><span>Fé & Ação</span></div>
+        </div>
+      </div>
+      <div class="lideres-card">
+        <img src="imagens/lideres-jovens.jpg" alt="Ellithon e Jhennifer" />
+        <div class="lideres-info">
+          <p class="lideres-names">Ellithon & Jhennifer</p>
+          <p class="lideres-role">Líderes dos Jovens Influentes</p>
+          <p class="lideres-desc">Casal apaixonado por Jesus e pela juventude de Tangará. Liderando com propósito e alegria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:4rem 2rem;">
+    <span class="sec-tag">Nossa Equipe</span>
+    <h2 class="sec-title">Quem faz acontecer</h2>
+    <p class="sec-sub">A equipe por trás dos Jovens Influentes</p>
+    <div class="equipe-grid fade-up">
+      <div class="membro-card"><img src="imagens/equipe-julia.jpg" alt="Júlia" /><div class="membro-info"><strong>Júlia</strong><p class="membro-cargo">Tesoureira</p></div></div>
+      <div class="membro-card"><img src="imagens/equipe-maria.jpg" alt="Maria" /><div class="membro-info"><strong>Maria</strong><p class="membro-cargo">Secretária</p></div></div>
+      <div class="membro-card"><img src="imagens/equipe-agatha.jpg" alt="Agatha" /><div class="membro-info"><strong>Agatha</strong><p class="membro-cargo">Eventos</p></div></div>
+      <div class="membro-card"><img src="imagens/equipe-tacila.jpg" alt="Tacila" /><div class="membro-info"><strong>Tacila</strong><p class="membro-cargo">Eventos</p></div></div>
+    </div>
+    <div class="prog-grid fade-up">
+      <div class="prog-card"><p class="prog-dia">⚡ Sexta-feira</p><h3 class="prog-nome">Encontro de Jovens</h3><p class="prog-hora">20h</p><p class="prog-desc">Culto, células e comunhão. Programação varia — acompanhe no Instagram!</p></div>
+      <div class="prog-card"><p class="prog-dia">🔥 Sábado</p><h3 class="prog-nome">Programação Especial</h3><p class="prog-hora">20h</p><p class="prog-desc">Eventos, atividades temáticas e muito mais. Cada sábado é uma surpresa!</p></div>
+    </div>
+    <div class="fotos-grid fade-up">
+      <div class="foto-item"><img src="imagens/jovens-evento1.jpg" alt="Jovens — evento" /></div>
+      <div class="foto-item"><img src="imagens/jovens-evento2.jpg" alt="Jovens — programação" /></div>
+    </div>
+    <div class="insta-inner fade-up">
+      <div class="insta-text"><strong>Fique por dentro de tudo!</strong><span>Programação completa, eventos e novidades no Instagram</span></div>
+      <a class="btn-ig" href="https://instagram.com/influentes_ieqtangara" target="_blank">📸 @influentes_ieqtangara</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ EVENTOS ═══ -->
+<section id="eventos" class="section">
+  <div class="wrap">
+    <span class="sec-tag">Agenda</span>
+    <h2 class="sec-title">Eventos & Programação</h2>
+    <p class="sec-sub">Fique por dentro de tudo que está acontecendo na IEQ Tangará</p>
+    <div class="tema-banner fade-up">
+      <div class="tema-content">
+        <div class="tema-arte"><img src="imagens/tema-ano.png" alt="Avante & Sem Parar" /></div>
+        <div class="tema-text">
+          <div class="badge">Tema do Ano</div>
+          <h2>Avante & Sem Parar</h2>
+          <p><strong>"Prossigo para o alvo, pelo prêmio da soberana vocação de Deus em Cristo Jesus."</strong><br>Filipenses 3:14</p>
+        </div>
+      </div>
+    </div>
+    <div class="destaques-grid fade-up">
+      <div class="evento-card"><img src="imagens/avivah.jpg" alt="Avivah" /><span class="evento-badge purple">Destaque</span><div class="evento-overlay"><p class="evento-data">04 de Julho</p><h3 class="evento-nome">IV Avivah</h3><p class="evento-tipo">Grande evento da IEQ Tangará</p></div></div>
+      <div class="evento-card"><img src="imagens/acampamento.jpg" alt="Acampamento" /><span class="evento-badge gold">Em breve</span><div class="evento-overlay"><p class="evento-data">Fevereiro 2027</p><h3 class="evento-nome">Acampamento</h3><p class="evento-tipo">Data a confirmar — aguarde!</p></div></div>
+      <div class="evento-card"><img src="imagens/danca.jpg" alt="Dança" /><div class="evento-overlay"><p class="evento-data">IEQ Tangará</p><h3 class="evento-nome">Ministério de Dança</h3><p class="evento-tipo">Apresentações especiais nos cultos</p></div></div>
+    </div>
+    <h3 class="cal-title">📅 Calendário Jovens Influentes 2025</h3>
+    <div class="cal-grid fade-up">
+      <div class="cal-item"><div class="cal-data"><p class="dia">04</p><p class="mes">ABR</p></div><div class="cal-info"><strong>Célula no Lar</strong><span>Programação Jovens</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">18</p><p class="mes">ABR</p></div><div class="cal-info"><strong>Churrasco na Chácara</strong><span>Confraternização</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">25</p><p class="mes">ABR</p></div><div class="cal-info"><strong>Regional</strong><span>Evento Regional</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">02</p><p class="mes">MAI</p></div><div class="cal-info"><strong>Evangelismo na Praça</strong><span>Culto ao Ar Livre</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">06</p><p class="mes">JUN</p></div><div class="cal-info"><strong>Culto de Casais</strong><span>Igreja Geral</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">20</p><p class="mes">JUN</p></div><div class="cal-info"><strong>Regional</strong><span>Evento Regional</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">04</p><p class="mes">JUL</p></div><div class="cal-info"><strong>Avivah + Cinema</strong><span>Evento Especial</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">18</p><p class="mes">JUL</p></div><div class="cal-info"><strong>Culto na Roça</strong><span>Programação Jovens</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">01</p><p class="mes">AGO</p></div><div class="cal-info"><strong>Congresso Estadual</strong><span>Evento IEQ</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">15</p><p class="mes">AGO</p></div><div class="cal-info"><strong>Culto Temático</strong><span>Programação Jovens</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">18</p><p class="mes">SET</p></div><div class="cal-info"><strong>Acampa Fuga</strong><span>18 e 19/09</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">17</p><p class="mes">OUT</p></div><div class="cal-info"><strong>Luau</strong><span>Programação Jovens</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">07</p><p class="mes">NOV</p></div><div class="cal-info"><strong>Thermas</strong><span>Programação Jovens</span></div></div>
+      <div class="cal-item destaque"><div class="cal-data"><p class="dia">28</p><p class="mes">NOV</p></div><div class="cal-info"><strong>Congresso</strong><span>Evento Especial</span></div></div>
+      <div class="cal-item"><div class="cal-data"><p class="dia">12</p><p class="mes">DEZ</p></div><div class="cal-info"><strong>Confraternização</strong><span>Encerramento do Ano</span></div></div>
+    </div>
+    <div class="aviso">⚠️ Programação sujeita a alterações — acompanhe <strong style="color:rgba(255,255,255,.7);margin-left:4px;">@influentes_ieqtangara</strong></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ LOCALIZAÇÃO ═══ -->
+<section id="localizacao" class="section">
+  <div class="wrap">
+    <span class="sec-tag">Onde Estamos</span>
+    <h2 class="sec-title">Nossa Localização</h2>
+    <p class="sec-sub">Venha nos visitar — você é muito bem-vindo!</p>
+    <div class="loc-grid fade-up">
+      <div class="mapa-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3700.5!2d-47.9!3d-21.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDU4JzQ4LjAiUyA0N8KwNTQnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="loc-info">
+        <div class="loc-card">
+          <p class="loc-card-title">📍 Endereço Atual</p>
+          <p class="loc-endereco"><strong>Igreja Quadrangular Tangará</strong>Rua Ilton Resitano, 164<br>Jardim Tangará<br>São Carlos – SP</p>
+        </div>
+        <div class="novo-templo-card">
+          <img src="imagens/novo-templo2.png" alt="Novo Templo" />
+          <span class="templo-badge">🏗 Em Construção</span>
+          <div class="novo-templo-overlay"><strong>Novo Templo — Em Breve!</strong><span>Um espaço moderno para servir e adorar a Deus</span></div>
+        </div>
+        <a class="btn-maps" href="https://maps.google.com/?q=Rua+Ilton+Resitano,164,Jardim+Tangará,São+Carlos,SP" target="_blank">🗺 Abrir no Google Maps</a>
+      </div>
+    </div>
+
+    <!-- CONTATO -->
+    <span class="sec-tag" id="contato" style="margin-top:4rem;display:block;">Fale Conosco</span>
+    <h2 class="sec-title">Contato & Redes Sociais</h2>
+    <p class="sec-sub">Estamos aqui para te receber e responder</p>
+    <div class="contato-grid fade-up">
+      <a class="contato-card" href="https://instagram.com/quadrangular.tangara" target="_blank"><div class="contato-icon ic-red">📸</div><div class="contato-info"><strong>Instagram da Igreja</strong><span>@quadrangular.tangara</span></div></a>
+      <a class="contato-card" href="https://instagram.com/influentes_ieqtangara" target="_blank"><div class="contato-icon ic-purple">⚡</div><div class="contato-info"><strong>Jovens Influentes</strong><span>@influentes_ieqtangara</span></div></a>
+      <a class="contato-card" href="https://instagram.com/vyrtud_tangara" target="_blank"><div class="contato-icon ic-pink">💃</div><div class="contato-info"><strong>Dança Vyrtud</strong><span>@vyrtud_tangara</span></div></a>
+      <a class="contato-card" href="https://wa.me/5519992417277" target="_blank"><div class="contato-icon ic-green">💬</div><div class="contato-info"><strong>WhatsApp</strong><span>(19) 99241-7277</span></div></a>
+      <a class="oracao-card" href="https://wa.me/5519992417277?text=Olá,%20gostaria%20de%20fazer%20um%20pedido%20de%20oração." target="_blank">
+        <div class="oracao-left"><div class="oracao-icon">🙏</div><div class="oracao-text"><strong>Fazer um Pedido de Oração</strong><span>Clique aqui — estamos prontos para interceder por você</span></div></div>
+        <div class="btn-oracao">Pedir Oração</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══ NOVO AQUI ═══ -->
+<section id="novo-aqui" class="section">
+  <div class="wrap">
+    <span class="sec-tag">Primeiro Contato</span>
+    <h2 class="sec-title">Novo por Aqui?</h2>
+    <p class="sec-sub">Seja muito bem-vindo! Aqui você encontrará uma família que te recebe de braços abertos.</p>
+    <div class="acolhimento-hero fade-up">
+      <div class="acolhimento-bg"></div>
+      <div class="acolhimento-overlay"></div>
+      <div class="acolhimento-content">
+        <h2>Um lugar onde você <span>pertence</span></h2>
+        <p>Na IEQ Tangará, não importa quem você é ou de onde vem — aqui você é recebido com amor, sem julgamento. Venha como você é.</p>
+        <a class="btn-primary" href="https://wa.me/5519992417277" target="_blank">💬 Falar com a gente</a>
+      </div>
+    </div>
+    <div class="passos-grid fade-up">
+      <div class="passo-card"><span class="passo-num">1</span><div class="passo-icon">🚪</div><h3>Chegue à vontade</h3><p>Venha como você se sentir confortável. Você é bem-vindo do jeito que você é.</p></div>
+      <div class="passo-card"><span class="passo-num">2</span><div class="passo-icon">🤝</div><h3>Você será acolhido</h3><p>Nossa equipe de recepção está pronta para te receber com um sorriso.</p></div>
+      <div class="passo-card"><span class="passo-num">3</span><div class="passo-icon">🎵</div><h3>Participe do culto</h3><p>Louvor, oração e uma mensagem prática para sua vida. Dura em média 1h30.</p></div>
+      <div class="passo-card"><span class="passo-num">4</span><div class="passo-icon">❤️</div><h3>Conheça a família</h3><p>Após o culto, fique um pouco mais e conheça as pessoas. Aqui todo mundo é família.</p></div>
+    </div>
+    <div class="faq-grid fade-up">
+      <div class="faq-item"><strong>Preciso ser cristão para ir?</strong><p>Não! Todos são bem-vindos, independente da sua fé ou história de vida.</p></div>
+      <div class="faq-item"><strong>Quanto tempo dura o culto?</strong><p>Em média 1h30, com louvor, oração e pregação da Palavra de Deus.</p></div>
+      <div class="faq-item"><strong>Tem lugar para crianças?</strong><p>Sim! Temos o ministério infantil para que as crianças também sejam cuidadas com carinho.</p></div>
+      <div class="faq-item"><strong>Tem programação para todos?</strong><p>Com certeza! Temos ministérios de Jovens, Crianças, Mulheres e Homens Corajosos — cada um com sua programação.</p></div>
+      <div class="faq-item"><strong>Como chego até a igreja?</strong><p>Rua Ilton Resitano, 164 — Jardim Tangará, São Carlos – SP. Veja o mapa na seção Localização!</p></div>
+      <div class="faq-item"><strong>Posso falar com alguém antes?</strong><p>Claro! Fale com a gente pelo WhatsApp (19) 99241-7277. Teremos prazer em te receber.</p></div>
+    </div>
+    <div class="cta-final fade-up">
+      <h2>Pronto para nos visitar? 🙌</h2>
+      <p>Escolha um culto, apareça, e descubra uma família que está esperando por você.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://wa.me/5519992417277?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20igreja!" target="_blank">💬 Falar pelo WhatsApp</a>
+        <a class="btn-outline" href="#cultos">Ver horários dos cultos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-grid"><div class="lc lc1">✝</div><div class="lc lc2">🕊</div><div class="lc lc3">🏆</div><div class="lc lc4">♛</div></div>
+    <div class="nav-logo-text">IEQ Tangará<span>São Carlos · SP</span></div>
+  </div>
+  <div class="footer-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#cultos">Cultos</a>
+    <a href="#ministerios">Ministérios</a>
+    <a href="#jovens">Jovens</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#localizacao">Localização</a>
+    <a href="#novo-aqui">Novo Aqui</a>
+  </div>
+  <p class="footer-copy">© 2025 Igreja do Evangelho Quadrangular — Tangará, São Carlos SP. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// NAVBAR SCROLL
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',window.scrollY>60);
+  document.getElementById('heroBg').style.transform=`scale(1.05) translateY(${window.scrollY*.12}px)`;
+});
+
+// LOGO DUPLO CLIQUE → ADMIN
+let clicks=0,timer;
+document.getElementById('logo').addEventListener('click',()=>{
+  clicks++;clearTimeout(timer);
+  timer=setTimeout(()=>clicks=0,500);
+  if(clicks>=2){window.open('/admin','_blank');clicks=0;}
+});
+
+// HAMBURGER
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');}
+
+// FADE UP AO SCROLL
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.12});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
