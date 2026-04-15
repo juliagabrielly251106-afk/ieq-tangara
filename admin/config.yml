@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "imagens"
+public_folder: "/imagens"
+
+locale: pt
+
+collections:
+  - name: "configuracoes"
+    label: "Configurações Gerais"
+    files:
+      - name: "geral"
+        label: "Informações da Igreja"
+        file: "content/geral.json"
+        fields:
+          - { label: "Nome da Igreja", name: "nome", widget: "string" }
