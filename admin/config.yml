@@ -1,9 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "posts"
-    create: true
-    fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Imagem", name: "image", widget: "image" }
-      - { label: "Conteúdo", name: "body", widget: "markdown" }
+  - name: "site"
+    label: "Configurações do Site"
+    files:
+      - file: "content/site.json"
+        label: "Geral"
+        name: "geral"
+        fields:
+          - { label: "Imagem do Banner", name: "banner", widget: "image" }
+          - { label: "Imagem Sobre", name: "sobre_img", widget: "image" }
+          - { label: "Imagem Igreja", name: "igreja_img", widget: "image" }
