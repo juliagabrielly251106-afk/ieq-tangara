@@ -1,3 +1,10 @@
 {
-  "nome": "IGREJA DO EVANGELHO QUADRANGULAR - TANGARÁ"
+  "historia": "Texto da história da igreja...",
+  "pastores": [
+    {
+      "nome": "Marcelo Garcia",
+      "cargo": "Pastor",
+      "foto": "/imagens/pastor-marcelo.jpg"
+    }
+  ]
 }
