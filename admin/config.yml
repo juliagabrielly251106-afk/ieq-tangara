@@ -2,17 +2,97 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "imagens"
+public_folder: "/imagens"
 
 collections:
-  - name: "site"
-    label: "Configurações do Site"
+
+  # 🏠 HOME
+  - name: "home"
+    label: "Página Inicial"
     files:
-      - file: "content/site.json"
-        label: "Geral"
-        name: "geral"
+      - file: "content/home.json"
+        label: "Conteúdo Home"
+        name: "home"
         fields:
-          - { label: "Imagem do Banner", name: "banner", widget: "image" }
-          - { label: "Imagem Sobre", name: "sobre_img", widget: "image" }
-          - { label: "Imagem Igreja", name: "igreja_img", widget: "image" }
+          - { label: "Título Principal", name: "titulo", widget: "string" }
+          - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+          - { label: "Imagem do Banner", name: "imagem", widget: "image" }
+
+  # 👨‍ пастores / SOBRE
+  - name: "sobre"
+    label: "Sobre / Pastores"
+    files:
+      - file: "content/sobre.json"
+        label: "Conteúdo Sobre"
+        name: "sobre"
+        fields:
+          - { label: "Texto História", name: "historia", widget: "text" }
+
+          - label: "Pastores"
+            name: "pastores"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Cargo", name: "cargo", widget: "string" }
+              - { label: "Foto", name: "foto", widget: "image" }
+
+  # ⛪ CULTOS
+  - name: "cultos"
+    label: "Cultos"
+    files:
+      - file: "content/cultos.json"
+        label: "Lista de Cultos"
+        name: "cultos"
+        fields:
+          - label: "Cultos"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Dia", name: "dia", widget: "string" }
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Horário", name: "horario", widget: "string" }
+
+  # 🔥 MINISTÉRIOS
+  - name: "ministerios"
+    label: "Ministérios"
+    files:
+      - file: "content/ministerios.json"
+        label: "Lista de Ministérios"
+        name: "ministerios"
+        fields:
+          - label: "Ministérios"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Descrição", name: "descricao", widget: "text" }
+              - { label: "Imagem", name: "imagem", widget: "image" }
+
+  # ⚡ JOVENS
+  - name: "jovens"
+    label: "Jovens Influentes"
+    files:
+      - file: "content/jovens.json"
+        label: "Conteúdo Jovens"
+        name: "jovens"
+        fields:
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Frase", name: "frase", widget: "string" }
+          - { label: "Imagem Principal", name: "imagem", widget: "image" }
+
+  # 📅 EVENTOS
+  - name: "eventos"
+    label: "Eventos"
+    files:
+      - file: "content/eventos.json"
+        label: "Lista de Eventos"
+        name: "eventos"
+        fields:
+          - label: "Eventos"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Data", name: "data", widget: "string" }
+              - { label: "Imagem", name: "imagem", widget: "image" }
