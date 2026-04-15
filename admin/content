@@ -1,5 +1,32 @@
 {
   "titulo": "Igreja do Evangelho Quadrangular",
-  "subtitulo": "Jesus Cristo é o mesmo ontem, hoje e eternamente",
-  "imagem": "/imagens/culto-hero.jpg"
+  "descricao": "Uma igreja para todos",
+  "imagem": "images/uploads/capa.jpg",
+  "historia": "Nossa igreja começou com o propósito de levar o evangelho...",
+  
+  "pastores": [
+    {
+      "nome": "Pastor Marcos",
+      "cargo": "Pastor Presidente",
+      "foto": "images/uploads/pastor1.jpg"
+    },
+    {
+      "nome": "Pastor André",
+      "cargo": "Pastor Auxiliar",
+      "foto": "images/uploads/pastor2.jpg"
+    }
+  ],
+
+  "cultos": [
+    {
+      "dia": "Domingo",
+      "nome": "Culto da Família",
+      "horario": "19:00"
+    },
+    {
+      "dia": "Quarta-feira",
+      "nome": "Culto de Ensino",
+      "horario": "19:30"
+    }
+  ]
 }
