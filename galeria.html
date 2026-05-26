@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galeria IEQ</title>
+
+<style>
+
+body{
+background:#111;
+font-family:Arial;
+margin:0;
+padding:20px;
+color:white;
+text-align:center;
+}
+
+h1{
+margin-bottom:30px;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.galeria img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+transition:0.3s;
+}
+
+.galeria img:hover{
+transform:scale(1.03);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Galeria IEQ Tangará</h1>
+
+<div class="galeria">
+
+<img src="imagens/foto1.jpg">
+<img src="imagens/foto2.jpg">
+<img src="imagens/foto3.jpg">
+
+</div>
+
+</body>
+</html>
